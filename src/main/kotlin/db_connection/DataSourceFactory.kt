@@ -26,7 +26,10 @@ object DataSourceFactory {
             }
 
             DataSourceType.JDBC -> {
-                JdbcDataSource()
+                val config = JdbcDataSource()
+                config.user = "user"
+                config.password = "user"
+                config
             }
         }
     }
