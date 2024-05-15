@@ -8,7 +8,7 @@ import javax.sql.DataSource
 class ProductDAO(private val dataSource: DataSource, private val console: IOutputInfo) : IProductDAO {
 
     override fun create(product: Product): Product? {
-        val sql = "INSERT INTO products (id, name, price, description, brand, category) VALUES (?, ?, ?, ?, ?, ?)"
+        val sql = "INSERT INTO productos (id, name, price, description, brand, category) VALUES (?, ?, ?, ?, ?, ?)"
         return try {
             dataSource.connection.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
@@ -34,7 +34,7 @@ class ProductDAO(private val dataSource: DataSource, private val console: IOutpu
     }
 
     override fun getById(id: Int): Product? {
-        val sql = "SELECT * FROM products WHERE id = ?"
+        val sql = "SELECT * FROM productos WHERE id = ?"
         return try {
             dataSource.connection.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
@@ -61,7 +61,7 @@ class ProductDAO(private val dataSource: DataSource, private val console: IOutpu
     }
 
     override fun getAll(): List<Product>? {
-        val sql = "SELECT * FROM products"
+        val sql = "SELECT * FROM productos"
         return try {
             dataSource.connection.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
@@ -89,7 +89,7 @@ class ProductDAO(private val dataSource: DataSource, private val console: IOutpu
     }
 
     override fun update(product: Product): Product? {
-        val sql = "UPDATE products SET name = ?, price = ?, description = ?, brand = ?, category = ? WHERE id = ?"
+        val sql = "UPDATE productos SET name = ?, price = ?, description = ?, brand = ?, category = ? WHERE id = ?"
         return try {
             dataSource.connection.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
@@ -115,7 +115,7 @@ class ProductDAO(private val dataSource: DataSource, private val console: IOutpu
     }
 
     override fun delete(id: Int): Boolean {
-        val sql = "DELETE FROM products WHERE id = ?"
+        val sql = "DELETE FROM productos WHERE id = ?"
         return try {
             dataSource.connection.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->

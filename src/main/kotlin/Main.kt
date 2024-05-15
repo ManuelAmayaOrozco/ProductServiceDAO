@@ -11,13 +11,7 @@ fun main() {
     val console = Console()
 
     // Creamos la instancia de la base de datos
-    val dataSource = DataSourceFactory.getDS(DataSourceFactory.DataSourceType.JDBC)
-
-    val jdbcUrl = "jdbc:postgresql://localhost:5432/example"
-
-    // get the connection
-    val connection = DriverManager
-        .getConnection(jdbcUrl, "postgres", "postgres")
+    val dataSource = DataSourceFactory.getDS(DataSourceFactory.DataSourceType.HIKARI)
 
     val product = Product(1, "Smartphone", 999.99f, "The latest smartphone model", "Apple", "Electronics")
 
